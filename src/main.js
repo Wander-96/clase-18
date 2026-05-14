@@ -1,8 +1,6 @@
 import ENVIRONMENT from "./config/environment.config.js";
 import connectMongoDB from "./config/mongodb.config.js";
 import express from "express";
-
-/* SOLO EN LOCAL Y SI TENER PROBLEMAS DE DNS PARA CONECTARTE A MONGODB */
 import dns from 'dns';
 import authRouter from "./routes/auth.routers.js";
 
@@ -44,7 +42,7 @@ RECOMENDACION:
 const app = express();
 const PORT = ENVIRONMENT.PORT;
 
-// Parse JSON
+
 app.use(express.json());
 
 app.use('/api/auth', authRouter);
