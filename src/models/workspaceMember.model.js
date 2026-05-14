@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import { WORKSPACE_COLLECTION_NAME } from "./workspace.model";
-import { USER_COLLECTION_NAME } from "./user.model";
-import { MEMBER_WORKSPACE_ROLES } from "../constants/memberRoles.constant";
+import { WORKSPACE_COLLECTION_NAME } from "./workspace.model.js";
+import { USER_COLLECTION_NAME } from "./user.model.js";
+import { MEMBER_WORKSPACE_ROLES } from "../constants/memberRoles.constant.js";
 
 const workspaceMemberSchema = new mongoose.Schema({
     fk_workspace_id: {
@@ -26,6 +26,6 @@ const workspaceMemberSchema = new mongoose.Schema({
     }
 })
 export const WORKSPACE_MEMBER_MODEL_NAME = 'WorkspaceMember'
-const WorkspaceMember = mongoose.Model(WORKSPACE_MEMBER_MODEL_NAME, workspaceMemberSchema)
+const WorkspaceMember = mongoose.model(WORKSPACE_MEMBER_MODEL_NAME, workspaceMemberSchema)
 
 export default WorkspaceMember

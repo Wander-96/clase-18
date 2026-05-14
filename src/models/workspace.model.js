@@ -20,6 +20,6 @@ const workspaceSchema = new mongoose.Schema({
         default: true
     }
 })
-const WORKSPACE_COLLECTION_NAME = "Workspace"
+export const WORKSPACE_COLLECTION_NAME = "Workspace"
 const Workspace = mongoose.model(WORKSPACE_COLLECTION_NAME, workspaceSchema);
 export default Workspace

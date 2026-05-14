@@ -13,10 +13,15 @@ const userSchema = new mongoose.Schema(
         email: {
             type: String,
             required: true
-            
+
         },
         password: {
             type: String,
+            required: true
+        },
+        email_verificado: {
+            type: Boolean,
+            default: false,
             required: true
         },
         fecha_creacion: {
@@ -35,7 +40,7 @@ const userSchema = new mongoose.Schema(
     }
 )
 
-const USER_COLLECTION_NAME = "user"
+export const USER_COLLECTION_NAME = "user"
 const User = mongoose.model(USER_COLLECTION_NAME, userSchema)
 
 export default User
