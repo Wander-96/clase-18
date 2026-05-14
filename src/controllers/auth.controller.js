@@ -81,26 +81,21 @@ class AuthController {
         try {
             const { email } = req.query;
 
-            // 1. Validar que llegó el email
             if (!email) {
                 throw new ServerError("Falta proveer el email", 400);
             }
 
-            // 2. Buscar al usuario por email
             const user = await userRepository.getByEmail(email);
             if (!user) {
                 throw new ServerError("Usuario no encontrado", 404);
             }
 
-            // 3. Validar que no esté verificado aún
             if (user.email_verificado === true) {
                 throw new ServerError("El email ya fue verificado previamente", 400);
             }
 
-            // 4. Actualizar el estado a verdadero en MongoDB
             await userRepository.updateById(user._id, { email_verificado: true });
 
-            // 5. Responder exitosamente
             return res.status(200).json({
                 message: "Email verificado exitosamente",
                 ok: true,
@@ -115,7 +110,7 @@ class AuthController {
                     status: error.status
                 });
             } else {
-                console.error('Error critico en verifyEmail:', error);
+                console.error('Error critico', error);
                 return res.status(500).json({
                     message: "Error interno del servidor",
                     ok: false,
